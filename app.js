@@ -8,7 +8,12 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());  // Ativa o CORS para todas as rotas
+const corsOptions = {
+    origin: '*', // ou 'http://127.0.0.1:5500' para limitar o acesso
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+app.use(cors(corsOptions));  // Ativa o CORS para todas as rotas
 
 // Caso fosse limitar o acesso do CORS
 // const corsOptions = {
